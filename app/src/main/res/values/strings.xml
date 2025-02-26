@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Buscaminas</string>
+
+    <string name="menu_new_game">Nuevo juego</string>
+    <string name="menu_difficulty">Dificultad</string>
+    <string name="menu_character">Selección de personaje</string>
+    <string name="menu_instructions">Instrucciones"</string>
+</resources>
