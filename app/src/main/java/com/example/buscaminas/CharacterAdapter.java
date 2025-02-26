@@ -12,11 +12,13 @@ public class CharacterAdapter  extends BaseAdapter {
     private Context context;
     private int[] characterImages;  // Array de imágenes de los personajes
 
+    //Constructor
     public CharacterAdapter(Context context, int[] characterImages) {
         this.context = context;
         this.characterImages = characterImages;
     }
 
+    //Retorna la longitud del array characterImages
     public int getCount() {
         return characterImages.length;
     }
@@ -25,10 +27,12 @@ public class CharacterAdapter  extends BaseAdapter {
         return null;
     }
 
+    //Retorna la posición del item
     public long getItemId(int position) {
         return position;
     }
 
+    //Configura la vista en la que se mostrarán las imágenes en el dialog
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView = new ImageView(context);
         imageView.setImageResource(characterImages[position]);

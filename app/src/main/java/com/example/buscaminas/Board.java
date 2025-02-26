@@ -15,6 +15,7 @@ public class Board {
     private int columnsNumber;
     private int jokersNumber;
 
+    //Constructor
     public Board(int rowsNumber, int columnsNumber, int jokersNumber){
         this.rowsNumber = rowsNumber;
         this.columnsNumber = columnsNumber;
@@ -22,6 +23,7 @@ public class Board {
         initBoard();
     }
 
+    //Creación de la lógoca que seguirá el tablero
     public void initBoard(){
         table = new Box[this.rowsNumber][this.columnsNumber];
         for (int i = 0; i< table.length; i++){
@@ -32,6 +34,7 @@ public class Board {
         generateJokers();
     }
 
+    //Distribución aleatoria de los jokers en el tablero
     private void generateJokers(){
         int generatedJokers = 0;
 
@@ -47,6 +50,7 @@ public class Board {
         updateCloseJokers();
     }
 
+    //Definición en cada uno de los boxes de los jokers que tiene cerca
     private void updateCloseJokers(){
         for (int i = 0; i< table.length; i++){
             for (int j = 0; j< table[i].length; j++){
@@ -58,6 +62,7 @@ public class Board {
         }
     }
 
+    //Función para detectar las casillas cercanas de cada uno de los boxes en el tablero
     private List<Box> getCloseBoxes(int rowPos, int columnPos){
         List<Box> boxList = new LinkedList<>();
         for(int i=0; i<8; i++){
@@ -104,34 +109,42 @@ public class Board {
         return boxList;
     }
 
+    //Getter de Box
     public Box[][] getTable() {
         return table;
     }
 
+    //Setter de Box
     public void setTable(Box[][] table) {
         this.table = table;
     }
 
+    //Getter de rowsNumber
     public int getRowsNumber() {
         return rowsNumber;
     }
 
+    //Setter de rowsNumber
     public void setRowsNumber(int rowsNumber) {
         this.rowsNumber = rowsNumber;
     }
 
+    //Getter de columsNumber
     public int getColumnsNumber() {
         return columnsNumber;
     }
 
+    //Setter de columsNumber
     public void setColumnsNumber(int columnsNumber) {
         this.columnsNumber = columnsNumber;
     }
 
+    //Getter de jokersNumber
     public int getJokersNumber() {
         return jokersNumber;
     }
 
+    //Setter de jokesNumber
     public void setJokersNumber(int jokersNumber) {
         this.jokersNumber = jokersNumber;
     }

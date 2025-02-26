@@ -38,15 +38,17 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        //Configura el widget toolbar para que funcione como ActionBar
         Toolbar appToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(appToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-//        createBoard(15, 10, 15);
+        //Crea el primer tablero
         createBoard(10, 8, 8);
-//        createBoard(8, 6, 4);
+
     }
 
+    //Inserta en el toolbar el menú creado en menu/menu_des
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    //Configura las acciones de las diferentes opciones del menú
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -75,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    //Función para crear el tablero
     public void createBoard(int rows, int colums, int jokers){
 
         this.jokersCount = 0;
@@ -99,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 params.setMargins(1, 1, 1, 1);
 
                 button.setLayoutParams(params);
-                button.setBackgroundColor(Color.rgb(i+j, i+j+5*10, i+j+15*6));
+                button.setBackgroundColor(Color.rgb(i+j, i+30+j*15, i+100+j*15));
 
                 final int row = i;
                 final int col = j;
@@ -124,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Función para definir el click en cada uno de los boxes que componen el tablero
     public void onButtonClick(View v, int row, int column){
 
         Box[][] boxes = this.board.getTable();
@@ -180,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Función para definir el longClick en cada uno de los boxes del tablero
     public void onButtonLongClick(View v, int row, int column, int jokers){
 
         Box[][] boxes = this.board.getTable();
@@ -203,26 +208,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Función que define la opción del menú "Nuevo juego"
     public void startNewGame(){
         this.dialogs.startNewGame();
     }
 
+    //Función que define la opción del menú "Dificultad"
     public void showDifficultyOptions(){
         this.dialogs.showDifficultyOptions();
     }
 
+    //Función que define la opción del menú "Selecciona personaje"
     public void showCharacterSelection(){
         this.dialogs.showCharacterSelection();
     }
 
+    //Función que define la opción del menú "Instrucciones"
     public void showInstructions(){
         this.dialogs.showInstructions();
     }
 
+    //Getter de difficulty
     public int getDifficulty() {
         return difficulty;
     }
 
+    //setter de difficulty
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }

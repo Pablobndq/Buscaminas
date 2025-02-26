@@ -16,11 +16,13 @@ public class Dialogs {
     private Context context;
     private MainActivity main;
 
+    //Constructor
     public Dialogs (Context context, MainActivity main){
         this.context = context;
         this.main = main;
     }
 
+    //Muestra el dialog cuando ganas
     public void showWinerDialog(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
@@ -48,6 +50,8 @@ public class Dialogs {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+    //Muestra el dialog cuando pierdes
     public void showLoserDialog(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
@@ -75,6 +79,7 @@ public class Dialogs {
         dialog.show();
     }
 
+    //Muestra el dialog cuando seleccionas "Nuevo juego"
     public void startNewGame(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
@@ -107,6 +112,7 @@ public class Dialogs {
         dialog.show();
     }
 
+    //Muestra el dialog cuando selecciones "Dificultad"
     public void showDifficultyOptions(){
 
         // Crear un RadioGroup con RadioButtons
@@ -164,6 +170,7 @@ public class Dialogs {
         dialog.show();
     }
 
+    //Muestra el dialog cuando seleccionas "Selección de personaje"
     public void showCharacterSelection() {
 
         // Array con las imágenes de los personajes
@@ -209,6 +216,7 @@ public class Dialogs {
         dialog.show();
     }
 
+    //Muestra el dialog cuando seleccionas "Instrucciones"
     public void showInstructions(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
