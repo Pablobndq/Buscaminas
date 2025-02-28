@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -36,13 +37,13 @@ public class Dialogs {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (main.getDifficulty() == 0) {
-                            main.createBoard(10, 8, 8);
+                            main.createBoard(8, 6, 6);
                         } else if (main.getDifficulty() == 1) {
                             main.createBoard(12, 8, 10);
                         } else if (main.getDifficulty() ==2) {
                             main.createBoard(15, 10, 20);
                         } else {
-                            main.createBoard(10, 8, 8);
+                            main.createBoard(8, 6, 6);
                         }
                     }
                 });
@@ -117,21 +118,22 @@ public class Dialogs {
 
         // Crear un RadioGroup con RadioButtons
         RadioGroup radioGroup = new RadioGroup(this.context);
-        radioGroup.setOrientation(RadioGroup.VERTICAL); // Establecer la orientación para los botones de opción (vertical)
+        radioGroup.setOrientation(RadioGroup.VERTICAL);
+        radioGroup.setPadding(50, 50, 0, 0);
 
         // Crear los RadioButtons
         RadioButton radioButtonEasy = new RadioButton(this.context);
-        radioButtonEasy.setPadding(50, 0, 0, 0);
+        radioButtonEasy.setPadding(10, 0, 0, 0);
         radioButtonEasy.setId(View.generateViewId());
         radioButtonEasy.setText("Fácil");
 
         RadioButton radioButtonMedium = new RadioButton(this.context);
-        radioButtonMedium.setPadding(50, 0, 0, 0);
+        radioButtonMedium.setPadding(10, 0, 0, 0);
         radioButtonMedium.setId(View.generateViewId());
         radioButtonMedium.setText("Medio");
 
         RadioButton radioButtonHard = new RadioButton(this.context);
-        radioButtonHard.setPadding(50, 0, 0, 0);
+        radioButtonHard.setPadding(10, 0, 0, 0);
         radioButtonHard.setId(View.generateViewId());
         radioButtonHard.setText("Difícil");
 
@@ -175,24 +177,29 @@ public class Dialogs {
 
         // Array con las imágenes de los personajes
         int[] characterImages = new int[]{
-                R.drawable.leon,
-                R.drawable.zorro,
-                R.drawable.abeja,
-                R.drawable.oveja,
+                R.drawable.character1,
+                R.drawable.character10,
+                R.drawable.character3,
+                R.drawable.character4,
+                R.drawable.character5,
+                R.drawable.character6,
+                R.drawable.character7,
+                R.drawable.character8,
+                R.drawable.character9
         };
 
-        GridView gridView = new GridView(this.context);
-        gridView.setNumColumns(3);
-        gridView.setVerticalSpacing(15);
+        GridView showCharacterGrid = new GridView(this.context);
+        showCharacterGrid.setNumColumns(3);
+        showCharacterGrid.setVerticalSpacing(15);
         CharacterAdapter adapter = new CharacterAdapter(this.context, characterImages);
-        gridView.setAdapter(adapter);
+        showCharacterGrid.setAdapter(adapter);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
         builder
                 .setCancelable(false)
                 .setTitle("Selecciona un personaje")
                 .setMessage("Elige tu personaje para el nuevo juego:")
-                .setView(gridView)
+                .setView(showCharacterGrid)
                 .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -201,12 +208,11 @@ public class Dialogs {
                 });
 
         // Configurar el listener para el item click
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        showCharacterGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Toast.makeText(context, "Personaje " + (position + 1) + " seleccionado", Toast.LENGTH_SHORT).show();
-
+                main.changeLogoView(position);
 
             }
         });

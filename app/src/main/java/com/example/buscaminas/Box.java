@@ -5,6 +5,7 @@ public class Box {
     private int positionColumn;
     private boolean joker;
     private int closeJokers;
+    private boolean isOpen = false;
 
     //Constructor
     public Box(int positionRow, int positionColumn) {
@@ -55,5 +56,15 @@ public class Box {
     //Función para incrementar el número de jokers cercanos
     public void increaseCloseJokers(){
         this.closeJokers++;
+    }
+
+    //Getter de isOpen
+    public boolean isOpen() {
+        return isOpen;
+    }
+
+    //Setter de isOpen
+    public void setOpen(boolean open) {
+        isOpen = open;
     }
 }

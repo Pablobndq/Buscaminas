@@ -63,7 +63,7 @@ public class Board {
     }
 
     //Función para detectar las casillas cercanas de cada uno de los boxes en el tablero
-    private List<Box> getCloseBoxes(int rowPos, int columnPos){
+    public List<Box> getCloseBoxes(int rowPos, int columnPos){
         List<Box> boxList = new LinkedList<>();
         for(int i=0; i<8; i++){
             int tmpRowPos = rowPos;

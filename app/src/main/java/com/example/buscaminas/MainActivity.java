@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -20,9 +18,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private Board board;
+    private ImageButton[][] controlButtons;
     private Dialogs dialogs = new Dialogs(this, this);
     private int jokersCount = 0;
     private int difficulty =  0;
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         //Crea el primer tablero
-        createBoard(10, 8, 8);
+        createBoard(8, 6, 6);
 
     }
 
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.jokersCount = 0;
         this.board = new Board(rows, colums, jokers);
+        this.controlButtons = new ImageButton[rows][colums];
 
         GridLayout grid = (GridLayout) findViewById(R.id.main_container);
         grid.removeAllViews();
@@ -93,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
             for(int j=0; j<colums; j++){
 
                 ImageButton button = new ImageButton(this);
+                this.controlButtons[i][j] = button;
 
                 button.setId(View.generateViewId());
 
@@ -131,7 +134,11 @@ public class MainActivity extends AppCompatActivity {
     public void onButtonClick(View v, int row, int column){
 
         Box[][] boxes = this.board.getTable();
+        List<Box> closeBoxes = this.board.getCloseBoxes(row, column);
         ImageButton b = (ImageButton) v;
+        ImageButton tempB;
+
+        boxes[row][column].setOpen(true);
 
         if(boxes[row][column].isJoker()){
             b.setBackgroundColor(Color.rgb(255, 255, 255));
@@ -139,42 +146,62 @@ public class MainActivity extends AppCompatActivity {
             b.setScaleType(ImageView.ScaleType.CENTER_CROP);
             b.setEnabled(false);
             this.dialogs.showLoserDialog();
+        }else if(boxes[row][column].getCloseJokers() == 0){
+            b.setBackgroundColor(Color.rgb(255, 255, 255));
+            b.setEnabled(false);
+            for(Box closeBox: closeBoxes){
+                tempB = this.controlButtons[closeBox.getPositionRow()][closeBox.getPositionColumn()];
+                if(!closeBox.isOpen()){
+                    closeBox.setOpen(true);
+                    tempB.setBackgroundColor(Color.rgb(255, 255, 255));
+                    tempB.setEnabled(false);
+                    onButtonClick(tempB, closeBox.getPositionRow(), closeBox.getPositionColumn());
+                }
+            }
         }else if(boxes[row][column].getCloseJokers() == 1){
+            boxes[row][column].setOpen(true);
             b.setBackgroundColor(Color.rgb(255, 255, 255));
             b.setImageResource(R.drawable.n1);
             b.setScaleType(ImageView.ScaleType.CENTER_CROP);
             b.setEnabled(false);
         }else if(boxes[row][column].getCloseJokers() == 2){
+            boxes[row][column].setOpen(true);
             b.setBackgroundColor(Color.rgb(255, 255, 255));
             b.setImageResource(R.drawable.n2);
             b.setScaleType(ImageView.ScaleType.CENTER_CROP);
             b.setEnabled(false);
         }else if(boxes[row][column].getCloseJokers() == 3){
+            boxes[row][column].setOpen(true);
             b.setBackgroundColor(Color.rgb(255, 255, 255));
             b.setImageResource(R.drawable.n3);
             b.setScaleType(ImageView.ScaleType.CENTER_CROP);
             b.setEnabled(false);
         }else if(boxes[row][column].getCloseJokers() == 4){
+            boxes[row][column].setOpen(true);
             b.setBackgroundColor(Color.rgb(255, 255, 255));
             b.setImageResource(R.drawable.n4);
             b.setScaleType(ImageView.ScaleType.CENTER_CROP);
             b.setEnabled(false);
         }else if(boxes[row][column].getCloseJokers() == 5){
+            boxes[row][column].setOpen(true);
             b.setBackgroundColor(Color.rgb(255, 255, 255));
             b.setImageResource(R.drawable.n5);
             b.setScaleType(ImageView.ScaleType.CENTER_CROP);
             b.setEnabled(false);
         }else if(boxes[row][column].getCloseJokers() == 6){
+            boxes[row][column].setOpen(true);
             b.setBackgroundColor(Color.rgb(255, 255, 255));
             b.setImageResource(R.drawable.n6);
             b.setScaleType(ImageView.ScaleType.CENTER_CROP);
             b.setEnabled(false);
         }else if(boxes[row][column].getCloseJokers() == 7){
+            boxes[row][column].setOpen(true);
             b.setBackgroundColor(Color.rgb(255, 255, 255));
             b.setImageResource(R.drawable.n7);
             b.setScaleType(ImageView.ScaleType.CENTER_CROP);
             b.setEnabled(false);
         }else if(boxes[row][column].getCloseJokers() == 8){
+            boxes[row][column].setOpen(true);
             b.setBackgroundColor(Color.rgb(255, 255, 255));
             b.setImageResource(R.drawable.n8);
             b.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -206,6 +233,46 @@ public class MainActivity extends AppCompatActivity {
         }else {
             this.dialogs.showLoserDialog();
         }
+    }
+
+    public void changeLogoView(int character){
+
+        ImageView imageView = findViewById(R.id.logo);
+
+        switch (character){
+
+            case 0:
+                imageView.setImageResource(R.drawable.character1);
+                break;
+            case 1:
+                imageView.setImageResource(R.drawable.character10);
+                break;
+            case 2:
+                imageView.setImageResource(R.drawable.character3);
+                break;
+            case 3:
+                imageView.setImageResource(R.drawable.character4);
+                break;
+            case 4:
+                imageView.setImageResource(R.drawable.character5);
+                break;
+            case 5:
+                imageView.setImageResource(R.drawable.character6);
+                break;
+            case 6:
+                imageView.setImageResource(R.drawable.character7);
+                break;
+            case 7:
+                imageView.setImageResource(R.drawable.character8);
+                break;
+            case 8:
+                imageView.setImageResource(R.drawable.character9);
+                break;
+            default:
+                imageView.setImageResource(R.drawable.risa2);
+                break;
+        }
+
     }
 
     //Función que define la opción del menú "Nuevo juego"

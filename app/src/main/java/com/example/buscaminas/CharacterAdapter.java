@@ -36,7 +36,8 @@ public class CharacterAdapter  extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView = new ImageView(context);
         imageView.setImageResource(characterImages[position]);
-        imageView.setLayoutParams(new GridView.LayoutParams(200, 200));
+        imageView.setPadding(20, 10, 0, 10);
+        imageView.setLayoutParams(new GridView.LayoutParams(290, 290));
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         return imageView;
