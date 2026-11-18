@@ -39,17 +39,17 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        //Configura el widget toolbar para que funcione como ActionBar
+        //Set toolbar widget as ActionBar
         Toolbar appToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(appToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        //Crea el primer tablero
+        //Create first table
         createBoard(8, 6, 6);
 
     }
 
-    //Inserta en el toolbar el menú creado en menu/menu_des
+    //Insert menu in toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    //Configura las acciones de las diferentes opciones del menú
+    //Set all menu options
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //Función para crear el tablero
+    //Create the table
     public void createBoard(int rows, int colums, int jokers){
 
         this.jokersCount = 0;
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //Función para definir el click en cada uno de los boxes que componen el tablero
+    //Set click in each boxes in the table
     public void onButtonClick(View v, int row, int column){
 
         Box[][] boxes = this.board.getTable();
@@ -211,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //Función para definir el longClick en cada uno de los boxes del tablero
+    //Set longClick in each boxes in the table
     public void onButtonLongClick(View v, int row, int column, int jokers){
 
         Box[][] boxes = this.board.getTable();
@@ -275,32 +275,32 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //Función que define la opción del menú "Nuevo juego"
+    //Set new game option
     public void startNewGame(){
         this.dialogs.startNewGame();
     }
 
-    //Función que define la opción del menú "Dificultad"
+    //Set difficulty menu options
     public void showDifficultyOptions(){
         this.dialogs.showDifficultyOptions();
     }
 
-    //Función que define la opción del menú "Selecciona personaje"
+    //Set select character menu option
     public void showCharacterSelection(){
         this.dialogs.showCharacterSelection();
     }
 
-    //Función que define la opción del menú "Instrucciones"
+    //Set instructions menu option
     public void showInstructions(){
         this.dialogs.showInstructions();
     }
 
-    //Getter de difficulty
+    //Getter difficulty
     public int getDifficulty() {
         return difficulty;
     }
 
-    //setter de difficulty
+    //setter difficulty
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }

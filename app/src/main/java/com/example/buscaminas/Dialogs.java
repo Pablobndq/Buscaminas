@@ -23,7 +23,7 @@ public class Dialogs {
         this.main = main;
     }
 
-    //Muestra el dialog cuando ganas
+    //Show winner dialog
     public void showWinerDialog(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
@@ -52,7 +52,7 @@ public class Dialogs {
         dialog.show();
     }
 
-    //Muestra el dialog cuando pierdes
+    //Show loser dialog
     public void showLoserDialog(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
@@ -80,7 +80,7 @@ public class Dialogs {
         dialog.show();
     }
 
-    //Muestra el dialog cuando seleccionas "Nuevo juego"
+    //Show new game dialog
     public void startNewGame(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
@@ -113,7 +113,7 @@ public class Dialogs {
         dialog.show();
     }
 
-    //Muestra el dialog cuando selecciones "Dificultad"
+    //Show difficulty dialog
     public void showDifficultyOptions(){
 
         // Crear un RadioGroup con RadioButtons
@@ -148,11 +148,11 @@ public class Dialogs {
                 .setCancelable(false)
                 .setTitle("Selecciona la dificultad")
                 .setMessage("Elige el nivel de dificultad para el nuevo juego:")
-                .setView(radioGroup)  // Establecer la vista del RadioGroup en el diálogo
+                .setView(radioGroup)  
                 .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // Verificar cuál RadioButton está seleccionado
+                        
                         int selectedId = radioGroup.getCheckedRadioButtonId();
                         if (selectedId == radioButtonEasy.getId()) {
                             main.setDifficulty(0);
@@ -166,16 +166,15 @@ public class Dialogs {
                         }
                     }
                 })
-                .setNegativeButton("Cancelar", null); // Botón de cancelar
+                .setNegativeButton("Cancelar", null); 
 
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
-    //Muestra el dialog cuando seleccionas "Selección de personaje"
+    //Show select character dialog
     public void showCharacterSelection() {
 
-        // Array con las imágenes de los personajes
         int[] characterImages = new int[]{
                 R.drawable.character1,
                 R.drawable.character10,
@@ -207,7 +206,7 @@ public class Dialogs {
                     }
                 });
 
-        // Configurar el listener para el item click
+        // Set listener for click item
         showCharacterGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -217,12 +216,12 @@ public class Dialogs {
             }
         });
 
-        // Mostrar el diálogo
+        // Show dialog
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
-    //Muestra el dialog cuando seleccionas "Instrucciones"
+    //Show instructions dialog
     public void showInstructions(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this.context);

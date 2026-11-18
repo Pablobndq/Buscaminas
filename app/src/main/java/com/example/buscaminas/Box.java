@@ -13,57 +13,57 @@ public class Box {
         this.positionColumn = positionColumn;
     }
 
-    //Getter de positionRow
+    //Getter positionRow
     public int getPositionRow() {
         return positionRow;
     }
 
-    //Setter de positionRow
+    //Setter positionRow
     public void setPositionRow(int positionRow) {
         this.positionRow = positionRow;
     }
 
-    //Getter de positionColumn
+    //Getter positionColumn
     public int getPositionColumn() {
         return positionColumn;
     }
 
-    //Setter de positionColumn
+    //Setter positionColumn
     public void setPositionColumn(int positionColumn) {
         this.positionColumn = positionColumn;
     }
 
-    //Getter de joker
+    //Getter joker
     public boolean isJoker() {
         return joker;
     }
 
-    //Setter de joker
+    //Setter joker
     public void setJoker(boolean joker) {
         this.joker = joker;
     }
 
-    //Getter de closeJokers
+    //Getter closeJokers
     public int getCloseJokers() {
         return closeJokers;
     }
 
-    //Setter de closeJokers
+    //Setter closeJokers
     public void setCloseJokers(int closeJokers) {
         this.closeJokers = closeJokers;
     }
 
-    //Función para incrementar el número de jokers cercanos
+    //Increase number of close jokers
     public void increaseCloseJokers(){
         this.closeJokers++;
     }
 
-    //Getter de isOpen
+    //Getter isOpen
     public boolean isOpen() {
         return isOpen;
     }
 
-    //Setter de isOpen
+    //Setter isOpen
     public void setOpen(boolean open) {
         isOpen = open;
     }

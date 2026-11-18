@@ -18,7 +18,7 @@ public class CharacterAdapter  extends BaseAdapter {
         this.characterImages = characterImages;
     }
 
-    //Retorna la longitud del array characterImages
+    //Return length characterImages array
     public int getCount() {
         return characterImages.length;
     }
@@ -27,12 +27,12 @@ public class CharacterAdapter  extends BaseAdapter {
         return null;
     }
 
-    //Retorna la posición del item
+    //Return item position
     public long getItemId(int position) {
         return position;
     }
 
-    //Configura la vista en la que se mostrarán las imágenes en el dialog
+    //Configure view about images in dialog
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView = new ImageView(context);
         imageView.setImageResource(characterImages[position]);
