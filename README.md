@@ -1,3 +1,4 @@
 BUSCAMINAS
+------------------------------
 
-Versión del clásico buscaminas para móviles Android, construido con Android Studio en Java.
+An Android version of the classic Minesweeper game, developed in Java using Android Studio.
